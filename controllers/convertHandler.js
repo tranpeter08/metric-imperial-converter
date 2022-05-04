@@ -124,7 +124,7 @@ function ConvertHandler() {
     const conversionTable = {
       gal: initNum * galToL,
       l: initNum / galToL,
-      lb: initNum * lbsToKg,
+      lbs: initNum * lbsToKg,
       kg: initNum / lbsToKg,
       mi: initNum * miToKm,
       km: initNum / miToKm,
