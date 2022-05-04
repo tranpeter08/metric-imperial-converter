@@ -7,46 +7,42 @@ let convertHandler = new ConvertHandler();
 
 suite('Unit Tests', function() {
   test('convertHandler should correctly read a whole number input.', () => {
-    expect(convertHandler.getNum('3km')).to.equal(3);
-    expect(convertHandler.getNum('8gal')).to.equal(8);
+    assert.equal(convertHandler.getNum('3km'), 3);
+    assert.equal(convertHandler.getNum('8gal'), 8);
   })
 
   test('convertHandler should correctly read a decimal number input', () => {
-
-    expect(convertHandler.getNum('5.2km')).to.equal(5.2);
-    expect(convertHandler.getNum('1.002km')).to.equal(1.002);
+    assert.equal(convertHandler.getNum('5.2km'), 5.2);
+    assert.equal(convertHandler.getNum('1.002km'), 1.002);
   })
 
   test('convertHandler should correctly read a fractional input.', () => {
-
-    expect(convertHandler.getNum('1/2km')).to.equal(0.5);
-    expect(convertHandler.getNum('1/4l')).to.equal(0.25);
+    assert.equal(convertHandler.getNum('1/2km'), 0.5);
+    assert.equal(convertHandler.getNum('1/4l'), 0.25);
   })
 
   test('convertHandler should correctly read a fractional input with a decimal.', () => {
-    expect(convertHandler.getNum('1.8/3.6km')).to.equal(0.5);
-    expect(convertHandler.getNum('.06/.24l')).to.equal(0.25);
+    assert.equal(convertHandler.getNum('1.8/3.6km'), 0.5);
+    assert.equal(convertHandler.getNum('.06/.24l'), 0.25);
   })
 
   test('convertHandler should correctly return an error on a double-fraction (i.e. 3/2/3).', () => {
-    expect(convertHandler.getNum('1/2/3km')).to.equal('INVALID_NUMBER');
+    assert.equal(convertHandler.getNum('1/2/3km'), 'INVALID_NUMBER');
   })
 
-
-
   test('convertHandler should correctly default to a numerical input of 1 when no numerical input is provided.', () => {
-    expect(convertHandler.getNum('km')).to.equal(1);
+    assert.equal(convertHandler.getNum('km'), 1);
   })
 
   test('convertHandler should correctly read each valid input unit.', () => {
-    expect(convertHandler.getUnit('100mi')).to.equal('mi');
-    expect(convertHandler.getUnit('19km')).to.equal('km');
-    expect(convertHandler.getUnit('9.7l')).to.equal('L');
-    expect(convertHandler.getUnit('1/4gal')).to.equal('gal');
+    assert.equal(convertHandler.getUnit('100mi'), 'mi');
+    assert.equal(convertHandler.getUnit('19km'), 'km');
+    assert.equal(convertHandler.getUnit('9.7l'), 'L');
+    assert.equal(convertHandler.getUnit('1/4gal'), 'gal');
   })
 
   test('convertHandler should correctly return an error for an invalid input unit.', () => {
-    expect(convertHandler.getUnit('1/4lb')).to.equal('INVALID_UNIT');
+    assert.equal(convertHandler.getUnit('1/4lb'), 'INVALID_UNIT');
   })
 
   test('convertHandler should return the correct return unit for each valid input unit.', () => {
@@ -55,12 +51,12 @@ suite('Unit Tests', function() {
       ['mi', 'km'],
       ['l', 'gal'],
       ['gal', 'L'],
+      ['lbs', 'kg'],
+      ['kg', 'lbs']
     ];
 
     unitConversion.forEach((conversion) => {
-      expect(convertHandler.getReturnUnit(conversion[0])).to.equal(
-        conversion[1]
-      );
+      assert.equal(convertHandler.getReturnUnit(conversion[0]), conversion[1]);
     });
   });
 
@@ -75,7 +71,7 @@ suite('Unit Tests', function() {
     ];
 
     for (const [unit, unitString] of units) {
-      expect(convertHandler.spellOutUnit(unit)).to.equal(unitString);
+      assert.equal(convertHandler.spellOutUnit(unit), unitString);
     }
 
   })
@@ -100,44 +96,32 @@ suite('Unit Tests', function() {
   test('convertHandler should correctly convert gal to L.', () => {
     const [initNum, initUnit] = [19, 'gal'];
 
-    expect(convertHandler.convert(initNum, initUnit)).to.equal(
-      convert(initNum, initUnit)
-    );
+    assert.equal(convertHandler.convert(initNum, initUnit), convert(initNum, initUnit));
   })
 
   test('convertHandler should correctly convert L to gal', () => {
     const [initNum, initUnit] = [23, 'l'];
-    expect(convertHandler.convert(initNum, initUnit)).to.equal(
-      convert(initNum, initUnit)
-    );
+    assert.equal(convertHandler.convert(initNum, initUnit), convert(initNum, initUnit));
   })
 
   test('convertHandler should correctly convert mi to km.', () => {
     const [initNum, initUnit] = [78, 'mi'];
-    expect(convertHandler.convert(initNum, initUnit)).to.equal(
-      convert(initNum, initUnit)
-    );
+    assert.equal(convertHandler.convert(initNum, initUnit), convert(initNum, initUnit));
   })
 
   test('convertHandler should correctly convert km to mi.', () => {
     const [initNum, initUnit] = [66, 'km'];
-    expect(convertHandler.convert(initNum, initUnit)).to.equal(
-      convert(initNum, initUnit)
-    );
+    assert.equal(convertHandler.convert(initNum, initUnit), convert(initNum, initUnit));
   })
 
   test('convertHandler should correctly convert lbs to kg.', () => {
     const [initNum, initUnit] = [3.4, 'lbs'];
-    expect(convertHandler.convert(initNum, initUnit)).to.equal(
-      convert(initNum, initUnit)
-    );
+   assert.equal(convertHandler.convert(initNum, initUnit), convert(initNum, initUnit));
   })
 
   test('convertHandler should correctly convert kg to lbs.', () => {
     const [initNum, initUnit] = [25, 'kg'];
-    expect(convertHandler.convert(initNum, initUnit)).to.equal(
-      convert(initNum, initUnit)
-    );
+   assert.equal(convertHandler.convert(initNum, initUnit), convert(initNum, initUnit));
   })
 
 });
