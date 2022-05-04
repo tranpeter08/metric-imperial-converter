@@ -19,7 +19,7 @@ module.exports = function (app) {
       let initUnit = getUnit(input);
       initUnit = initUnit === 'l' ? 'L' : initUnit;
 
-      const returnNum = convert(initNum, initUnit);
+      const returnNum = Math.round(convert(initNum, initUnit) * 1e5) / 1e5;
       const returnUnit = getReturnUnit(initUnit);
       const string = getString(initNum, initUnit, returnNum, returnUnit);
 
