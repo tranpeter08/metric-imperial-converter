@@ -88,12 +88,12 @@ suite('Unit Tests', function () {
 
       function convert(initNum, unit) {
         const conversionTable = {
-          gal: initNum * galToL,
-          l: initNum / galToL,
-          lbs: initNum * lbsToKg,
-          kg: initNum / lbsToKg,
-          mi: initNum * miToKm,
-          km: initNum / miToKm,
+          gal: initNum / galToL,
+          l: initNum * galToL,
+          lbs: initNum / lbsToKg,
+          kg: initNum * lbsToKg,
+          mi: initNum / miToKm,
+          km: initNum * miToKm,
         };
 
         return conversionTable[unit];
@@ -102,8 +102,8 @@ suite('Unit Tests', function () {
       const testCases = [
         [19, 'gal', 'l'],
         [23, 'l', 'gal'],
-        [3.4, 'lb', 'kg'],
-        [25, 'kg', 'lb'],
+        [3.4, 'lbs', 'kg'],
+        [25, 'kg', 'lbs'],
         [78, 'mi', 'km'],
         [66, 'km', 'mi'],
       ];
