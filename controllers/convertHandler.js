@@ -4,17 +4,17 @@ function ConvertHandler() {
     l: 'liter',
     mi: 'mile',
     km: 'kilometer',
-    lb: 'pound',
+    lbs: 'pound',
     kg: 'kilogram',
   };
 
   this.unitConversion = {
-    gal: 'l',
+    gal: 'L',
     l: 'gal',
     mi: 'km',
     km: 'mi',
-    lb: 'kg',
-    kg: 'lb',
+    lbs: 'kg',
+    kg: 'lbs',
   };
 
   this.splitInput = function (input) {
