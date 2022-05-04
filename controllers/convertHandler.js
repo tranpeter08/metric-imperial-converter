@@ -87,7 +87,7 @@ function ConvertHandler() {
       // };
       return 'INVALID_UNIT'
 
-    result = unitInput;
+    result = unitInput === 'l' ? 'L' : unitInput;
 
     return result;
   };

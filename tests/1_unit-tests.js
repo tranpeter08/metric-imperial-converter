@@ -70,8 +70,8 @@ suite('Unit Tests', function() {
       ['l', 'liter'],
       ['mi', 'mile'],
       ['gal', 'gallon'],
-      ['lbs', 'kg'],
-      ['kg', 'lbs']
+      ['lbs', 'pound'],
+      ['kg', 'kilogram']
     ];
 
     for (const [unit, unitString] of units) {
@@ -100,23 +100,9 @@ suite('Unit Tests', function() {
   test('convertHandler should correctly convert gal to L.', () => {
     const [initNum, initUnit] = [19, 'gal'];
 
-
-
-    const testCases = [
-      ,
-      // [23, 'l', 'gal'],
-      // [3.4, 'lbs', 'kg'],
-      // [25, 'kg', 'lbs'],
-      // [78, 'mi', 'km'],
-      // [66, 'km', 'mi'],
-    ];
-
-
     expect(convertHandler.convert(initNum, initUnit)).to.equal(
       convert(initNum, initUnit)
     );
-
-
   })
 
   test('convertHandler should correctly convert L to gal', () => {
@@ -153,6 +139,5 @@ suite('Unit Tests', function() {
       convert(initNum, initUnit)
     );
   })
-
 
 });
