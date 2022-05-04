@@ -17,7 +17,7 @@ function ConvertHandler() {
     kg: 'lbs',
   };
 
-  this.splitInput = function (input) {
+  this.splitInput = function(input) {
     let sliceIndex = 0;
     const unitRegex = /[a-zA-Z]/gm;
 
@@ -38,10 +38,11 @@ function ConvertHandler() {
     let numbers = numberInput.split('/');
 
     if (numbers.length > 2)
-      throw {
-        type: 'NUMBER_ERROR',
-        message: 'invalid input number: double fraction',
-      };
+      // throw {
+      //   type: 'NUMBER_ERROR',
+      //   message: 'invalid input number: double fraction',
+      // };
+      return 'INVALID_NUMBER'
 
     if (numbers[0] === '') return result;
 
@@ -49,20 +50,22 @@ function ConvertHandler() {
     let decimalRegex = /\.$/;
     let floats = numbers.map((numString) => {
       if (decimalRegex.test(numString))
-        throw {
-          type: 'NUMBER_ERROR',
-          message: 'invalid number: ending with decimal',
-        };
+        // throw {
+        //   type: 'NUMBER_ERROR',
+        //   message: 'invalid number: ending with decimal',
+        // };
+        return 'INVALID_NUMBER'
 
       return parseFloat(numString);
     });
 
     floats.forEach((num) => {
       if (Number.isNaN(num))
-        throw {
-          type: 'NUMBER_ERROR',
-          message: 'invalid number: error parsing string to float',
-        };
+        // throw {
+        //   type: 'NUMBER_ERROR',
+        //   message: 'invalid number: error parsing string to float',
+        // };
+      return 'INVALID_NUMBER'
     });
 
     result = floats.reduce((prev, current) => {
@@ -78,10 +81,11 @@ function ConvertHandler() {
     const unitInput = input.slice(sliceIndex).toLowerCase();
 
     if (!this.units[unitInput])
-      throw {
-        type: 'UNIT_ERROR',
-        message: 'Invalid unit: not found ' + unitInput,
-      };
+      // throw {
+      //   type: 'UNIT_ERROR',
+      //   message: 'Invalid unit: not found ' + unitInput,
+      // };
+      return 'INVALID_UNIT'
 
     result = unitInput;
 
@@ -141,7 +145,7 @@ function ConvertHandler() {
     return result;
   };
 
-  this.pluralize = function (num) {
+  this.pluralize = function(num) {
     if (num !== 1) return 's';
 
     return '';
