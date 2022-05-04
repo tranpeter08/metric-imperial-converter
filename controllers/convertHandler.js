@@ -122,12 +122,12 @@ function ConvertHandler() {
     let result = undefined;
 
     const conversionTable = {
-      gal: initNum / galToL,
-      l: initNum * galToL,
-      lbs: initNum / lbsToKg,
-      kg: initNum * lbsToKg,
-      mi: initNum / miToKm,
-      km: initNum * miToKm,
+      gal: initNum * galToL,
+      l: initNum / galToL,
+      lbs: initNum * lbsToKg,
+      kg: initNum / lbsToKg,
+      mi: initNum * miToKm,
+      km: initNum / miToKm,
     };
 
     result = conversionTable[initUnit.toLowerCase()];

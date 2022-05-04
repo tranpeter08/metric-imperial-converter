@@ -88,12 +88,12 @@ suite('Unit Tests', function () {
 
       function convert(initNum, unit) {
         const conversionTable = {
-          gal: initNum / galToL,
-          l: initNum * galToL,
-          lbs: initNum / lbsToKg,
-          kg: initNum * lbsToKg,
-          mi: initNum / miToKm,
-          km: initNum * miToKm,
+          gal: initNum * galToL,
+          l: initNum / galToL,
+          lbs: initNum * lbsToKg,
+          kg: initNum / lbsToKg,
+          mi: initNum * miToKm,
+          km: initNum / miToKm,
         };
 
         return conversionTable[unit];
